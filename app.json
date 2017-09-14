@@ -1,13 +1,14 @@
 {
-  "pages":[ 
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
-   
+    "pages/logs/logs",
+    "pages/emotion",
+    "pages/music"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "聆听你心",
+    "navigationBarTextStyle": "black"
   }
 }

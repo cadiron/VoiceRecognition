@@ -4,15 +4,31 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+ 
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    //底部字
+    text1:'Listen to your heart .',
+    //图标源
+    icon:'../../icon/music_icon.png',
+    icon1:'../../icon/voice_icon.png',
+    icon2:'../../icon/sum_icon.png'
   },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../music'
+    })
+  },
+  bindViewTap1:function(){
+    wx.navigateTo({
+      url: '../emotion',
+    })
+  },
+  bindViewTap2: function () {
+    wx.navigateTo({
+      url: '../logs/logs',
     })
   },
   onLoad: function () {

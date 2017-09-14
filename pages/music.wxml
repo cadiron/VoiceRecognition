@@ -1,0 +1,6 @@
+<!--pages/music.wxml-->
+
+<block class='wa-button-block'>
+<text>音乐播放器</text>
+<button type="primary" class='wa-button'>播放</button> 
+</block>
