@@ -4,6 +4,8 @@ Page({
         j:  1,//帧动画初始图片  
         isSpeaking:  false,//是否正在说话  
         voices:  [],//音频数组  
+        weekday: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+        showday:['今天','明天','']
     },
     onLoad:  function  ()  {
     },
@@ -102,8 +104,61 @@ Page({
                 })
             }
         })
-    }
-})
+    },
+
+    //当页面加载完成时，获取其经纬度
+    onLoad: function () {
+      var that = this;
+      var date = new Date();
+      date.setDate(date.getDate() + 2);
+      this.setData({
+        'showday[2]': this.data.weekday[date.getDay()]
+      });
+      console.log(this.data.showday);
+
+      //获得经纬度信息
+      wx.getLocation({
+        type: "wgs84",
+        success: function (res) {
+          var lat = res.latitude;//纬度
+          var lng = res.longitude;//经度
+          console.log(lat + "----" + lng);//打印信息
+          that.getCity(lat, lng);//调用自己写的函数获得城市信息
+        },
+      })
+    },
+
+    //获得城市信息
+    getCity: function (lat, lng) {
+      var that = this;
+
+      var url = "https://api.map.baidu.com/geocoder/v2/";
+      var param = {
+        ak: 'QgDjg59KnbdsL14plwnoP5rUAGKyDYPe',//百度地图API的ak
+        location: lat + "," + lng,//纬度+经度
+        output: 'json'//返回的数据格式
+      };
+
+      //发出请求，获取数据
+      wx.request({
+        url: url,
+        data: param,
+        success: function (res) {
+          console.log(res);//打印返回的数据
+          var district = res.data.result.addressComponent.district;
+          var street = res.data.result.addressComponent.street;
+          that.setData({//设置data的数据
+            district: district,
+            street: street
+          });
+
+          //调用自定义函数获取天气信息
+          district = district.substring(0, district.length - 1);//截掉最后一个字，如“越秀区”截掉“区”剩下“越秀”
+          
+        }
+      })
+    }
+  })
 //麦克风帧动画  
 function  speaking()  {
     var  _this  =  this;
@@ -116,4 +171,4 @@ function  speaking()  {
             j:  i
         })
     },  200);
-}  
+}
