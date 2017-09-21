@@ -1,6 +1,19 @@
 <!--pages/music.wxml-->
 
-<block class='wa-button-block'>
-<text>音乐播放器</text>
-<button type="primary" class='wa-button'>播放</button> 
+<!--上方图片墙-->
+<view class='img'>
+<image src='../icon/play_bg_icon.jpg' class='pic'></image>
+</view>
+<view class='img1'>
+<!--中间播放列表-->
+<block wx:for="{{song}}" wx:key="id" class="audio">
+
 </block>
+<!--播放控件-->
+<audio  src="{{item.src}}" id="myAudio"  >
+<button  class="wa-button" bindtap="audioPlay">播放</button>
+<button  class="wa-button" bindtap="audioPause">暂停</button>
+<button  class="wa-button" bindtap="audio14">设置当前播放时间为14秒</button>
+<button  class="wa-button" bindtap="audioStart">回到开头</button></audio>
+
+</view>

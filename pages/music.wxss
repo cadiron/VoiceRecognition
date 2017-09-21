@@ -1,2 +1,44 @@
 /* pages/music.wxss */
 @import '../wa-ui.wxss';
+.banner{
+    width: 750rpx;
+    height: 80rpx;
+   position: center;
+
+}
+
+.img{
+    position: center;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+    padding-left: 100rpx;
+    padding-right: 100rpx;
+}
+
+.img1{
+    position: center;
+    padding-left: 75rpx;
+    
+}
+
+.pic{
+    width: 550rpx;
+    height:  640rpx;
+
+}
+
+
+
+.button_anniu{
+    width: 150rpx;
+    height: 100rpx;
+  margin: 50rpx auto; 
+    display: flex;
+
+}
+
+.swiper{
+    width: 750rpx;
+    height: 80rpx;
+    position: center;
+}

@@ -25,5 +25,5 @@
  <view class="record-style">
  <button class="btn-style" bindtouchstart="touchdown" bindtouchend="touchup">按住 录音</button>
  <button class='btn-style' bindtap='gotoPlay'>播放录音</button>
- <button class='btn-style' bindtap="request">发送请求 </button>
+ <button class='btn-style' bindtap='request'>发送请求 </button>
  </view>

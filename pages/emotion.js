@@ -131,7 +131,6 @@ Page({
     //获得城市信息
     getCity: function (lat, lng) {
       var that = this;
-
       var url = "https://api.map.baidu.com/geocoder/v2/";
       var param = {
         ak: 'QgDjg59KnbdsL14plwnoP5rUAGKyDYPe',//百度地图API的ak
@@ -158,6 +157,18 @@ Page({
         }
       })
     }
+
+    // request:function(){
+    //   var url:"http:";
+    //   var data:"hello";
+    //   wx.request({
+    //     url:url,
+    //     data:data,
+    //     success:function(res){
+    //       console.log(res);
+    //     }
+    //   })
+    // }
   })
 //麦克风帧动画  
 function  speaking()  {
