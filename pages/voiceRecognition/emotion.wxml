@@ -1,6 +1,6 @@
-<scroll-view>
+<scroll-view class="background">
  <view wx:if="{{voices}}" class="common-list" style="margin-bottom:120rpx;">
-<block  wx:for="{{voices}}">
+<block  wx:for="{{voices}}" >
      <view class="board">
 	                <view class="cell"  >
 	                    <view class="cell-bd" data-key="{{item.filePath}}" bindtap="gotoPlay" > 
@@ -22,8 +22,12 @@
 <image wx:if="{{j==4}}" class="sound-style" src="../../icon/voice_icon_speech_sound_4.png" ></image>
 <image wx:if="{{j==5}}"class="sound-style" src="../../icon/voice_icon_speech_sound_5.png" ></image>
  </view>
- <view class="record-style">
- <button class="btn-style" bindtouchstart="touchdown" bindtouchend="touchup">按住 录音</button>
- <button class='btn-style' bindtap='gotoPlay'>播放录音</button>
- <button class='btn-style' bindtap='request'>发送请求 </button>
+ <view class="operation-container">
+ <!--播放录音  -->
+ <image class="icon-gotoPlay" src='../../icon/gotoPlay.png' bindtap="gotoPlay"></image>
+<!-- 按住录音操作 -->
+  <image class="icon-recorded" src="{{pauseStatus === false ? '../../icon/recorded.png' : '../../icon/recording.png'}}" bindtouchstart="touchdown" bindtouchend="touchup"></image>
+  <!-- 发送请求  -->
+  <image class="icon-request" src='../../icon/request.png'> </image>
+ 
  </view>

@@ -60,4 +60,42 @@
   white-space:nowrap;
   overflow: hidden;
   }
+/*操作图标*/
+.operation-container{
+  position: absolute;
+  bottom: 25rpx;
+  height: 240rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.icon-gotoPlay{
+  width: 100rpx;
+  height: 100rpx;
+}
+.icon-recording{
+  margin: 0 60rpx;
+  width: 140rpx;
+  height: 140rpx;
+}
+.icon-recorded{
+  margin: 0 60rpx;
+  width: 140rpx;
+  height: 140rpx;
+}
+.icon-request{
 
+  width: 100rpx;
+  height: 100rpx;
+}
+
+/*录音背景  */
+.background{
+  height: 60%;
+  top:0;
+  background:#596ace;
+
+
+}

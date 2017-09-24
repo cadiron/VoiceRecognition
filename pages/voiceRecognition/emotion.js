@@ -4,8 +4,7 @@ Page({
         j:  1,//帧动画初始图片  
         isSpeaking:  false,//是否正在说话  
         voices:  [],//音频数组  
-        weekday: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
-        showday:['今天','明天','']
+        pauseStatus:false
     },
     //手指按下  
     touchdown:  function  ()  {
@@ -22,7 +21,7 @@ Page({
                 //临时路径,下次进入小程序时无法正常使用  
                 var  tempFilePath  =  res.tempFilePath
                 console.log("tempFilePath: "  +  tempFilePath)
-        
+
                 //上传录音文件
                 wx.uploadFile({
                   url: 'http://localhost:8080/upload', //仅为示例，非真实的接口地址
