@@ -34,6 +34,46 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+     songlist: [{
+      songId: 0,
+      poster: 'http://159.203.250.111/Carly.png',
+      songTitle: 'Call_Me_Baby',
+      author: 'Carly_Rae_Jepsen',
+      src: 'http://159.203.250.111/Call_Me_Baby.mp3',
+    },
+
+    {
+      songId: 1,
+      poster: 'http://159.203.250.111/carly.png',
+      songTitle: 'Good_Time',
+      author: 'Carly_Rae_Jepsen',
+      src: 'http://159.203.250.111/Good_Time.mp3',
+    },
+
+    {
+      songId: 2,
+      poster: 'http://159.203.250.111/five1.png',
+      songTitle: 'Maps',
+      author: 'Marron 5',
+      src: 'http://159.203.250.111/maps.mp3',
+    },
+
+    {
+      songId: 3,
+      poster: 'http://159.203.250.111/five2.png',
+      songTitle: 'Animals',
+      author: 'Marron 5',
+      src: 'http://159.203.250.111/Animals.mp3',
+    },
+
+    {
+      songId: 4,
+      poster: 'http://159.203.250.111/five3.png',
+      songTitle: 'Sugar',
+      author: 'Marron 5',
+      src: 'http://159.203.250.111/Sugar.mp3',
+    }]
+
+
   }
 })

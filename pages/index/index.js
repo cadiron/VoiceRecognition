@@ -18,12 +18,12 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../music'
+      url: '../musicplay/songlist'
     })
   },
   bindViewTap1:function(){
     wx.navigateTo({
-      url: '../emotion',
+      url: '../voiceRecognition/emotion',
     })
   },
   bindViewTap2: function () {

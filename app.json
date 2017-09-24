@@ -2,13 +2,15 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/emotion",
-    "pages/music"
+    "pages/voiceRecognition/emotion",
+    "pages/musicplay/music",
+    "pages/musicplay/songlist",
+    "pages/voiceRecognition/voiceReg"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "聆听你心",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#596ace",
+    "navigationBarTitleText": "聆 听 你 心",
+    "navigationBarTextStyle": "white"
   }
 }

@@ -1,0 +1,2 @@
+/* pages/music/songlist.wxss */
+@import '../../wa-ui.wxss';

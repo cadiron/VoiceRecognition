@@ -1,0 +1,28 @@
+<!--pages/music.wxml-->
+<view class='container'>
+  <view class="bg">
+    <image class="poster" mode="scaleToFill" src="../../icon/bg3.jpg"></image>
+  </view>
+  <!--第二层层：灰色蒙层-->
+  <view class="bg-gray"></view>
+  <!--第三层 旋转层-->
+  <!--旋转图-->
+    <view class="rotate-disk-container">
+      <view class="rotate-disk {{pauseStatus === false ? 'rotate-360' : 'rotate-360-paused'}}">
+        <image class="poster" src="../../icon/bg3.jpg"></image>
+      </view>
+    </view>
+    <!--操作图-->
+    <view class="operation-container">
+      <image src="../../icon/prev.png" class="icon-prev" bindtap="bindTapPrev"></image>
+      <image
+        src="{{pauseStatus === false ? '../../icon/music_pause.png' : '../../icon/music_play.png'}}"
+        class="icon-play" bindtap="bindTapPlay"
+        ></image>
+      <image src="../../icon/next.png" class="icon-next" bindtap="bindTapNext"></image>
+    </view>
+
+<!--播放控件-->
+<audio  src="{{item.src}}" id="myAudio"  ></audio>
+
+</view>
