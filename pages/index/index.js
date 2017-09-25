@@ -28,7 +28,7 @@ Page({
   },
   bindViewTap2: function () {
     wx.navigateTo({
-      url: '../logs/logs',
+      url: '../stat/charts',
     })
   },
   onLoad: function () {

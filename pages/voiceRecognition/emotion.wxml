@@ -28,6 +28,6 @@
 <!-- 按住录音操作 -->
   <image class="icon-recorded" src="{{pauseStatus === false ? '../../icon/recorded.png' : '../../icon/recording.png'}}" bindtouchstart="touchdown" bindtouchend="touchup"></image>
   <!-- 发送请求  -->
-  <image class="icon-request" src='../../icon/request.png'> </image>
+  <image class="icon-request" src='../../icon/request.png' bindtap="showRegresult" > </image>
  
  </view>

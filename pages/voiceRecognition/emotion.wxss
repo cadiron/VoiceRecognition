@@ -95,7 +95,7 @@
 .background{
   height: 60%;
   top:0;
-  background:#596ace;
+  background:#f8d4b0;
 
 
 }

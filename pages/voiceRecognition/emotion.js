@@ -1,46 +1,52 @@
 // pages/emotion.js
+
 Page({
     data:  {
         j:  1,//帧动画初始图片  
         isSpeaking:  false,//是否正在说话  
         voices:  [],//音频数组  
-        pauseStatus:false
+        pauseStatus:false,
+        rebackData:-1
     },
     //手指按下  
     touchdown:  function  ()  {
         console.log("手指按下了...")
         console.log("new date : "  +  new  Date)
-        var  _this  =  this;
+         var _this=this
         speaking.call(this);
         this.setData({
             isSpeaking:  true
         })
         //开始录音  
         wx.startRecord({
-            success:  function  (res)  {
+            that:this,
+            success:res=>{
                 //临时路径,下次进入小程序时无法正常使用  
                 var  tempFilePath  =  res.tempFilePath
                 console.log("tempFilePath: "  +  tempFilePath)
-
                 //上传录音文件
                 wx.uploadFile({
                   url: 'http://localhost:8080/upload', //仅为示例，非真实的接口地址
                   filePath: tempFilePath,
                   name: 'file',
                   header: {
-                     'content-type': 'multipart/form-data'
+                    'content-type': 'multipart/form-data'
                   },
                   formData: {
                     'user': 'test'
                   },
-                  success: function (res) {
+          
+                  success:res=> {
+                    console.log("wx.uploadFilede的success函数")
                     var data = res.data
-                    //do something
+                    console.log("发送成功,返回数据data")
+                    _this.setData({//将返回数据记录在全局数据rebackData中
+                      rebackData:1
+                    })
+
                   }
                 })
-
-
-                //持久保存  
+                //持久保存-----考虑是否保留此功能17.9.24  
                 wx.saveFile({
                     tempFilePath:  tempFilePath,
                     success:  function  (res)  {
@@ -80,7 +86,7 @@ Page({
                 //录音失败  
                 wx.showModal({
                     title:  '提示',
-                    content:  '录音的姿势不对!',
+                    content:  '录音时间过短！请重新录制',
                     showCancel:  false,
                     success:  function  (res)  {
                         if  (res.confirm)  {
@@ -122,69 +128,20 @@ Page({
         })
     },
 
-    // //当页面加载完成时，获取其经纬度
-    // onLoad: function () {
-    //   var that = this;
-    //   var date = new Date();
-    //   date.setDate(date.getDate() + 2);
-    //   this.setData({
-    //     'showday[2]': this.data.weekday[date.getDay()]
-    //   });
-    //   console.log(this.data.showday);
+    showRegresult:function(event){
+      var _this=this;
+      var data = this.data.rebackData;
+     if(data==-1)//出错
+     {console.log("识别失败！")
+     
+     }
+     if (data = 0) { }//angry
+     if (data = 1) { }//fear
+     if (data = 2) { }//happy
+     if (data = 3) { } //sad
 
-    //   //获得经纬度信息
-    //   wx.getLocation({
-    //     type: "wgs84",
-    //     success: function (res) {
-    //       var lat = res.latitude;//纬度
-    //       var lng = res.longitude;//经度
-    //       console.log(lat + "----" + lng);//打印信息
-    //       that.getCity(lat, lng);//调用自己写的函数获得城市信息
-    //     },
-    //   })
-    // },
-
-    // //获得城市信息
-    // getCity: function (lat, lng) {
-    //   var that = this;
-    //   var url = "https://api.map.baidu.com/geocoder/v2/";
-    //   var param = {
-    //     ak: 'QgDjg59KnbdsL14plwnoP5rUAGKyDYPe',//百度地图API的ak
-    //     location: lat + "," + lng,//纬度+经度
-    //     output: 'json'//返回的数据格式
-    //   };
-
-    //   //发出请求，获取数据
-    //   wx.request({
-    //     url: url,
-    //     data: param,
-    //     success: function (res) {
-    //       console.log(res);//打印返回的数据
-    //       var district = res.data.result.addressComponent.district;
-    //       var street = res.data.result.addressComponent.street;
-    //       that.setData({//设置data的数据
-    //         district: district,
-    //         street: street
-    //       });
-
-    //       //调用自定义函数获取天气信息
-    //       district = district.substring(0, district.length - 1);//截掉最后一个字，如“越秀区”截掉“区”剩下“越秀”
-          
-    //     }
-    //   })
-    // }
-
-    // request:function(){
-    //   var url:"http://localhost:8080/UserController/getAllUs";
-    //   var data:"hello";
-    //   wx.request({
-    //     url:url,
-    //     data:data,
-    //     success:function(res){
-    //       console.log(res);
-    //     }
-    //   })
-    // }
+     }
+    
   })
 //麦克风帧动画  
 function  speaking()  {

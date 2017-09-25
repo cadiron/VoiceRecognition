@@ -5,11 +5,12 @@
     "pages/voiceRecognition/emotion",
     "pages/musicplay/music",
     "pages/musicplay/songlist",
-    "pages/voiceRecognition/voiceReg"
+    "pages/voiceRecognition/voiceReg",
+    "pages/stat/charts"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#596ace",
+    "navigationBarBackgroundColor": "#f8d4b0",
     "navigationBarTitleText": "聆 听 你 心",
     "navigationBarTextStyle": "white"
   }
