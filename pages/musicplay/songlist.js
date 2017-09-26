@@ -7,8 +7,14 @@ Page({
    */
   data: {
     songlist: app.globalData.songlist
-  }
+  },
 
+onLoad:function(){
+
+  wx.request({
+
+  })
+}
  
   
 })

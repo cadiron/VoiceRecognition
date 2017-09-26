@@ -41,7 +41,7 @@ Page({
                     var data = res.data
                     console.log("发送成功,返回数据data")
                     _this.setData({//将返回数据记录在全局数据rebackData中
-                      rebackData:1
+                      rebackData: 2
                     })
 
                   }
@@ -49,7 +49,7 @@ Page({
                 //持久保存-----考虑是否保留此功能17.9.24  
                 wx.saveFile({
                     tempFilePath:  tempFilePath,
-                    success:  function  (res)  {
+                    success: res =>  {
                         //持久路径  
                         //本地文件存储的大小限制为 100M  
                         var  savedFilePath  =  res.savedFilePath
@@ -131,14 +131,33 @@ Page({
     showRegresult:function(event){
       var _this=this;
       var data = this.data.rebackData;
-     if(data==-1)//出错
-     {console.log("识别失败！")
-     
-     }
-     if (data = 0) { }//angry
-     if (data = 1) { }//fear
-     if (data = 2) { }//happy
-     if (data = 3) { } //sad
+      console.log("识别失败！" + data)
+     if(data == -1)//出错
+     {console.log("识别失败！"+data)}
+     if (data==0) {
+       wx.navigateTo({
+         url: '../voiceRecognition/voiceReg',
+         data:0
+       })
+     }//angry
+     if (data == 1) {
+       
+         wx.navigateTo({
+           url: '../voiceRecognition/voiceReg',
+           data: 1
+       
+      } )
+     }//fear
+     if (data == 2) {
+       wx.navigateTo({
+         url: '../voiceRecognition/voiceReg',
+         data: 2
+       }) }//happy
+     if (data == 3) {
+       wx.navigateTo({
+         url: '../voiceRecognition/voiceReg',
+         data: 3
+       }) } //sad
 
      }
     
