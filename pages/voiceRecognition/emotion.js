@@ -1,12 +1,12 @@
-// pages/emotion.js
-
+// pages/emotion.js 
+var app = getApp();
 Page({
     data:  {
         j:  1,//帧动画初始图片  
         isSpeaking:  false,//是否正在说话  
         voices:  [],//音频数组  
         pauseStatus:false,
-        rebackData:-1
+        rebackData:0
     },
     //手指按下  
     touchdown:  function  ()  {
@@ -19,10 +19,9 @@ Page({
         })
         //开始录音  
         wx.startRecord({
-            that:this,
             success:res=>{
                 //临时路径,下次进入小程序时无法正常使用  
-                var  tempFilePath  =  res.tempFilePath
+                var  tempFilePath  =  res.tempFilePath;
                 console.log("tempFilePath: "  +  tempFilePath)
                 //上传录音文件
                 wx.uploadFile({
@@ -37,11 +36,23 @@ Page({
                   },
           
                   success:res=> {
-                    console.log("wx.uploadFilede的success函数")
-                    var data = res.data
-                    console.log("发送成功,返回数据data")
+                    console.log("wx.uploadFilede的success函数"+res);
+                    //标志位
+                    app.globalData.IsReg = true;
+                  
+                    //把后台传过来的数据做JSON解析
+                    var data = JSON.parse(res.data);
+
+                    //读取情绪识别结果
+                    var result = data.emtionResult;
+                    
+                    //把musicId存在全局数组musicIdList
+                    for(var i=0;i<10;i++){
+                      app.globalData.musicIdList[i]= data.musicList[i].musicId;
+                      console.log("musicId" +i+app.globalData.musicIdList[i]);
+                    }
                     _this.setData({//将返回数据记录在全局数据rebackData中
-                      rebackData: 2
+                      rebackData:result
                     })
 
                   }
@@ -131,32 +142,37 @@ Page({
     showRegresult:function(event){
       var _this=this;
       var data = this.data.rebackData;
-      console.log("识别失败！" + data)
+      var arr = [150,10,10,10]; 
+      console.log("进入展示函数！" + data)
      if(data == -1)//出错
      {console.log("识别失败！"+data)}
-     if (data==0) {
+     if (data==1) {
        wx.navigateTo({
-         url: '../voiceRecognition/voiceReg',
-         data:0
+         arr: [10, 150, 10, 10],
+               url: '../voiceRecognition/voiceReg?arr=' +arr
+
        })
      }//angry
-     if (data == 1) {
+     if (data == 2) {
        
          wx.navigateTo({
-           url: '../voiceRecognition/voiceReg',
-           data: 1
+           arr: [150, 10, 10, 10],
+           url: '../voiceRecognition/voiceReg?arr=' + arr
+          
        
       } )
-     }//fear
-     if (data == 2) {
-       wx.navigateTo({
-         url: '../voiceRecognition/voiceReg',
-         data: 2
-       }) }//happy
+     }//happy
      if (data == 3) {
        wx.navigateTo({
-         url: '../voiceRecognition/voiceReg',
-         data: 3
+         arr: [10, 10, 150, 10],
+         url: '../voiceRecognition/voiceReg?arr=' + arr
+       
+       }) }//neutral
+     if (data == 4) {
+       wx.navigateTo({
+         arr: [10, 10, 10, 150],
+         url: '../voiceRecognition/voiceReg?arr=' +arr
+      
        }) } //sad
 
      }

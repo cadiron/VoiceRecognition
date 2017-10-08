@@ -10,18 +10,18 @@
 <!--歌曲模板-->
 <template name="songitem">
 	<view class="songitem">
-		<navigator open-type="redirect" url="/pages/musiclay/music?songid={{item.src}}" class="song-play"><image src="../../icon/play.png" /></navigator>
-		<navigator open-type="redirect" url="/pages/musicplay/music?songid={{item.src}}" class="song-detail">
+		<navigator open-type="redirect" url="/pages/musicplay/music?songid={{item.src}}" class="song-play"><image src="../../icon/play.png" /></navigator>
+		<navigator open-type="redirect" url="/pages/musicplay/music?songid={{item.src}}"class="song-detail">
 			<view class="song-title">{{item.songTitle}}</view>
-			<view class="song-subtitle">{{item.author}} - {{item.style}}</view>
+			<view class="song-subtitle">{{item.singerName}} - {{item.albumTitle}}</view>
 		</navigator>
 	</view>
 </template>
 
 <template name="song-mini-item">
 	<view class="songitem">
-		<navigator open-type="redirect" url="/pages/musicplay/music?songid={{item.songid}}" class="song-play"><image src="../../icon/play.png" /></navigator>
-		<navigator open-type="redirect" url="/pages/musicplay/music?songid={{item.songid}}" class="song-detail">
+		<navigator url="/pages/musicplay/music?songid={{item.songid}}" class="song-play"><image src="../../icon/play.png" /></navigator>
+		<navigator  url="/pages/musicplay/music?songid={{item.songid}}" class="song-detail">
 			<view class="song-title">{{item.songTitle}}</view>
 			<view class="song-subtitle">{{item.artistname}}</view>
 		</navigator>

@@ -1,7 +1,7 @@
 <!--pages/music.wxml-->
 <view class='container'>
   <view class="bg">
-    <image class="poster" mode="scaleToFill" src="../../icon/bg3.jpg"></image>
+    <image class="poster" mode="scaleToFill" src="../../icon/bg1.jpg"></image>
   </view>
   <!--第二层层：灰色蒙层-->
   <view class="bg-gray"></view>
@@ -9,7 +9,7 @@
   <!--旋转图-->
     <view class="rotate-disk-container">
       <view class="rotate-disk {{pauseStatus === false ? 'rotate-360' : 'rotate-360-paused'}}">
-        <image class="poster" src="../../icon/bg3.jpg"></image>
+        <image class="poster" src="../../icon/bg1.jpg"></image>
       </view>
     </view>
     <!--操作图-->

@@ -1,4 +1,4 @@
-<!--index.wxml-->
+<!--index.wxml主界面-->
 <view class="container">
   <view class="userinfo">
     <block >
