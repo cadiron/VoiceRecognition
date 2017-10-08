@@ -3,7 +3,8 @@ const app=getApp();
 
 Page({
   data: {
-    pauseStatus: false
+    pauseStatus: false,
+    count:1
   },
   onLoad:function(e){
   var id = e.songid;

@@ -6,7 +6,7 @@ Page({
       musicid: 1,
       songTitle: 'Call_Me_Baby',
       singerName: 'Carly_Rae_Jepsen',
-      src: 'http://159.203.250.111/Call_Me_Baby.mp3',
+      songDir: 'http://159.203.250.111/Call_Me_Baby.mp3',
     },
     {
       musicid: 2,

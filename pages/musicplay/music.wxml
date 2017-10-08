@@ -23,6 +23,7 @@
     </view>
 
 <!--播放控件-->
+
 <audio  src="{{item.src}}" id="myAudio"  ></audio>
 
 </view>

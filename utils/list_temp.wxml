@@ -10,8 +10,8 @@
 <!--歌曲模板-->
 <template name="songitem">
 	<view class="songitem">
-		<navigator open-type="redirect" url="/pages/musicplay/music?songid={{item.src}}" class="song-play"><image src="../../icon/play.png" /></navigator>
-		<navigator open-type="redirect" url="/pages/musicplay/music?songid={{item.src}}"class="song-detail">
+		<navigator open-type="redirect" url="/pages/musicplay/music?songid={{item.songDir}}" class="song-play"><image src="../../icon/play.png" /></navigator>
+		<navigator open-type="redirect" url="/pages/musicplay/music?songid={{item.songDir}}"class="song-detail">
 			<view class="song-title">{{item.songTitle}}</view>
 			<view class="song-subtitle">{{item.singerName}} - {{item.albumTitle}}</view>
 		</navigator>
