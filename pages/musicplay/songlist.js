@@ -78,6 +78,7 @@ onLoad:function(){
   var musicId = app.globalData.musicIdList[0];
   wx.request({
     musicId: app.globalData.musicIdList[0],
+    header: header,
     url: "http://localhost:8080/getMusicDetail?musicId=" + musicId,
     header: {
       'content-type': 'application/json' // 默认值

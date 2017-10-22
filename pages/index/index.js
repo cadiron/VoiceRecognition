@@ -5,6 +5,7 @@ const app = getApp()
 Page({
   data: {
     userInfo: {},
+    userId:{},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     //底部字
@@ -17,7 +18,7 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../musicplay/songlist'
+      url: '../musicplay/songAndPlay'
     })
   },
   bindViewTap1:function(){
@@ -30,10 +31,12 @@ Page({
       url: '../stat/charts',
     })
   },
+  
   onLoad: function () {
-    if (app.globalData.userInfo) {
+    if (app.globalData.userInfo && app.globalData.userId ) {
       this.setData({
         userInfo: app.globalData.userInfo,
+        userId: app.globalData.userId ,
         hasUserInfo: true
       })
     } else if (this.data.canIUse){

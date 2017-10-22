@@ -1,15 +1,26 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx5ad1ef697101f7dd&secret=3d5b704517fac02e72a65859382695dd&js_code=' + res.code + '&grant_type=authorization_code',
+            data: {
+              code: res.code
+            },
+
+            success:res=>{
+              this.globalData.Cookie ='JSESSIONID='+ res.data.openid
+              console.log("Cookie" + this.globalData.Cookie)
+              
+            }
+          })
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
       }
     })
     // 获取用户信息
@@ -19,6 +30,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+          
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
 
@@ -34,6 +46,9 @@ App({
     })
   },
   globalData: {
+    Cookie:null,
+    userId:null,
+    userInfo:null,
     IsReg:false,
     musicIdList:[],
     musicList:[

@@ -1,10 +1,7 @@
 <!--pages/music/songlist.wxml-->
 <import src="../../utils/list_temp.wxml" />
-	<view class="songlist">
-		<block wx:for="{{musicDetailList}}"  wx:key="song_id">
-			<template is="songitem" data="{{item: item, index: index}}" />
-		</block>
-	</view>
-
-
-
+<view class="songlist">
+  <block wx:for="{{musicDetailList}}" wx:key="song_id">
+    <template is="songitem" data="{{item: item, index: index}}" />
+  </block>
+</view>

@@ -4,7 +4,7 @@ var app = getApp();
 var radarChart = null;
 Page({
   data: {
-    arr: [10, 150, 10, 10]
+    arr: [1, 5, 1, 1]
   },
   onLoad:function(e){
     var that = this;
@@ -33,13 +33,13 @@ Page({
       categories: ['happy', 'angry', 'neutral', 'sad'],
       series: [{
         name: '心情统计',
-        data: [150, 10, 10, 10]
+        data: [5, 1, 1, 1]
       }],
       width: windowWidth,
       height: 400,
       extra: {
         radar: {
-          max: 150
+          max: 10
         }
       }
     });

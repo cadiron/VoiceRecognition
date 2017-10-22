@@ -54,7 +54,7 @@ Page({
     let length = this.data.audioList.length
     let audioIndexPrev = this.data.audioIndex
     let audioIndexNow = audioIndexPrev
-    if (audioIndexPrev === length - 1) {
+    if (audioIndexPrev === length - 1) { 
       audioIndexNow = 0
     } else {
       audioIndexNow = audioIndexPrev + 1

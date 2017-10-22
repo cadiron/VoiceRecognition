@@ -6,7 +6,8 @@
     "pages/musicplay/music",
     "pages/musicplay/songlist",
     "pages/voiceRecognition/voiceReg",
-    "pages/stat/charts"
+    "pages/stat/charts",
+    "pages/musicplay/songAndPlay"
   ],
   "window": {
     "backgroundTextStyle": "light",

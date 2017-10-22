@@ -1,0 +1,61 @@
+<!--pages/musicplay/songAndPlay.wxml-->
+<template name="songitem">
+	<view class="songitem">
+  <!--播放图标  -->
+		<view class="song-play" bindtap="onclick" data-id="{{item.musicId}}" ><image src="../../icon/play.png" /></view>
+    <!--song 标题，歌手，专辑  -->
+    <view class="song-detail" bindtap="onclick" data-id="{{item.musicId}}">
+			<view class="song-title">{{item.songTitle}}</view>
+			<view class="song-subtitle">{{item.singerName}} - {{item.albumTitle}}</view>
+		</view>
+	</view>
+</template>
+
+<view class="swiper-tab">
+
+  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="switchNav">列表</view>
+
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="switchNav">播放</view>
+
+</view>
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+
+  <swiper-item>
+    <!-- 音乐列表 -->
+    <view>
+      <view class="songlist">
+        <block wx:for="{{musicDetailList}}" wx:key="song_id">
+          <template is="songitem" data="{{item: item, index: index}}" />
+        </block>
+      </view>
+    </view>
+  </swiper-item>
+
+  <swiper-item>
+    <!--音乐列表  -->
+    <view class='container'>
+      <view class="bg">
+        <image class="poster" mode="scaleToFill" src="../../icon/bg1.jpg"></image>
+      </view>
+      <!--第二层层：灰色蒙层-->
+      <view class="bg-gray"></view>
+      <!--第三层 旋转层-->
+      <!--旋转图-->
+      <view class="rotate-disk-container">
+        <view class="rotate-disk {{pauseStatus === false ? 'rotate-360' : 'rotate-360-paused'}}">
+          <image class="poster" src="../../icon/bg1.jpg"></image>
+        </view>
+      </view>
+      <!--操作图-->
+      <view class="operation-container">
+        <image src="../../icon/prev.png" class="icon-prev" bindtap="bindTapPrev"></image>
+        <image src="{{pauseStatus === false ? '../../icon/music_pause.png' : '../../icon/music_play.png'}}" class="icon-play" bindtap="bindTapPlay"></image>
+        <image src="../../icon/next.png" class="icon-next" bindtap="bindTapNext"></image>
+      </view>
+
+      <!--播放控件-->
+      <audio src="{{item.src}}" id="myAudio"></audio>
+
+    </view>
+  </swiper-item>
+</swiper>
