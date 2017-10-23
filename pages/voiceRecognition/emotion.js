@@ -6,7 +6,8 @@ Page({
     isSpeaking: false,//是否正在说话  
     voices: [],//音频数组  
     pauseStatus: false,
-    rebackData: 1
+    rebackData: 1,
+    filepath:null
   },
   //手指按下  
   touchdown: function () {
@@ -22,6 +23,7 @@ Page({
       success: res => {
         //临时路径,下次进入小程序时无法正常使用  
         var tempFilePath = res.tempFilePath;
+        
         console.log("tempFilePath: " + tempFilePath)
         //上传录音文件
         wx.uploadFile({
@@ -29,12 +31,13 @@ Page({
           filePath: tempFilePath,
           name: 'file',
           header: {
+            'Cookie': app.globalData.Cookie,
             'content-type': 'multipart/form-data'
+
           },
           formData: {
             'user': 'test'
           },
-
           success: res => {
             console.log("wx.uploadFilede的success函数" + res.data);
             //标志位
@@ -45,7 +48,7 @@ Page({
 
             //读取情绪识别结果
             var result = data.emotionResult;
-            console.log("返回结果"+result)
+            console.log("返回结果" + result)
 
             //把musicId存在全局数组musicIdList,注意这里的musicId要和返回的json中音乐数目一致
             for (var i = 0; i < 2; i++) {
@@ -55,9 +58,9 @@ Page({
             _this.setData({//将返回数据记录在全局数据rebackData中
               rebackData: result
             })
-
           }
         })
+
         //持久保存-----考虑是否保留此功能17.9.24  
         wx.saveFile({
           tempFilePath: tempFilePath,
@@ -67,13 +70,15 @@ Page({
             var savedFilePath = res.savedFilePath
             console.log("savedFilePath: " + savedFilePath)
           }
-        })
+        }),
+
         wx.showToast({
           title: '恭喜!录音成功',
           icon: 'success',
           duration: 1000
         })
       },
+
       fail: function (res) {
         //录音失败  
         wx.showModal({

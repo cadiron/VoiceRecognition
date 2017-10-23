@@ -3,27 +3,16 @@ var wxCharts = require('../../utils/wxcharts.js');
 var util = require('../../utils/util.js');
 var app = getApp();
 var radarChart = null;
-var Cookie = app.globalData.Cookie; 
 
 Page({
   data: {
-    arr: [8, 5, 2,4]
+    simulationDataName:'2017/09/23-2017/10/23心情统计',
+    simulationDataData: [8, 5, 2, 4],
+    arr: [8, 5, 2, 4]
   },
 
   onLoad: function (e) {
-    wx.request({
-      url: 'http://localhost:8080/checkUser?account=' + 'wangzi' + '&userId=' + '1',
-      header: {
-        'Cookie':app.globalData.Cookie,
-        'content-type': 'application/json' // 默认值
-      },
-      success: res => {
-        console.log("发送用户信息成功" + app.globalData.userId)
-      }
-    })
-    
     var that = this;
-    console.log("Onload函数内部" + e.arr)
     that.setData({
       arr: e.arr
     })
@@ -33,60 +22,64 @@ Page({
     console.log(radarChart.getCurrentDataIndex(e));
   },
 
-   //创建数据
+  //创建数据
   createSimulationData: function () {
+    var _that = this;
     var name = null;
-    var data = [1,1,1,1];
-  //获取当前日期
-    var dateBg = util.myTime(new Date())+""; 
-    var dateEd = util.myFormatTime(new Date())+""; 
-    name = dateBg+"-"+dateEd+"心情统计"
+    var data = [4, 3, 7, 1];
+    //获取tagIdMap
+    var showArr = [0, 0, 0, 0]
+    var tagArr =[];
+    //获取当前日期
+    var dateBg = util.myTime(new Date()) + "";
+    var dateEd = util.myFormatTime(new Date()) + "";
+    name = dateBg + "-" + dateEd + "心情统计"
+    _that.setData({//将返回数据记录在全局数据rebackData中
+      simulationDataName:name
+    })
     console.log("Cookie" + app.globalData.Cookie)
-    
-    // wx.request({
-    //   url: 'http://localhost:8080/checkUser?account=' + 'wangzi' + '&userId=' + '1',
-    //   header: {
-    //     'Cookie': Cookie,
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   success: res => {
-    //     console.log("发送用户信息成功" + app.globalData.userId)
-    //   }
-    // })
+
     //发送情绪统计请求
     wx.request({
-      url: 'http://localhost:8080/EmotionStatistics?dateBegin='+dateBg+'&dateEnd='+dateEd,
+      url: 'http://localhost:8080/EmotionStatistics?dateBegin=' + dateBg + '&dateEnd=' + dateEd,
       header: {
         'Cookie': app.globalData.Cookie,
         'content-type': 'application/json' // 默认值
       },
-      success:res=>{
-        console.log("返回json数据" + res)
-        console.log("返回json数据"+res.data)
-        console.log("返回json数据" + res.data.tagIdMap)
-        //把后台传过来的数据做JSON解析
-        var data = JSON.parse(res.data);
-        console.log("heheh" + data)
-        
+      success: res => {
+        tagArr = res.data.tagIdMap;
+        for (let key in tagArr) {
+          console.log('key: ' + key + ' = ' + tagArr[key]);
+          if (tagArr[key] == 1)
+          { showArr[0] += 1; }
+          if (tagArr[key] == 2)
+          { showArr[1] += 1; }
+          if (tagArr[key] == 3)
+          { showArr[2] += 1; }
+          if (tagArr[key] == 4)
+          { showArr[3] += 1; }
+          } 
+        console.log("返回json数据中tagIdMap" +showArr)
+        _that.setData({//将返回数据记录在全局数据rebackData中
+          simulationDataData:showArr
+        })
       }
-    })
-    return {
-      name:name,
-      data: data
-    }
+    })                  
   },
   //更新数据
   updateData: function () {
+    var that = this;
     var simulationData = this.createSimulationData();
+    console.log("更新的data数据" + that.data.simulationDataData)
     var series = [{
-      name: simulationData.name,
-      data: simulationData.data,
+      name: that.data.simulationDataName,
+      data: that.data.simulationDataData,
       format: function (val, name) {
-        return val.toFixed(2) ;
+        return val.toFixed(2);
       }
     }];
     radarChart.updateData({
-    series: series
+      series: series
     });
   },
   onReady: function (e) {
@@ -112,7 +105,7 @@ Page({
 
       extra: {
         radar: {
-          max: 10
+          max: 30
         }
       }
     });

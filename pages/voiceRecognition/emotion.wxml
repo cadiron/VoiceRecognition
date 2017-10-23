@@ -6,7 +6,7 @@
 
 <view class="operation-container">
   <!--播放录音  -->
-  <image class="icon-gotoPlay" src='../../icon/gotoPlay.png' bindtap="gotoPlay"></image>
+  <image class="icon-gotoPlay" src='../../icon/gotoPlay.png' bindtap="gotoPlay" data-key='{{filepath}}'></image>
   <!-- 按住录音操作 -->
   <image class="icon-recorded" src="{{pauseStatus === false ? '../../icon/recorded.png' : '../../icon/recording.png'}}" bindtouchstart="touchdown" bindtouchend="touchup"></image>
   <!-- 发送请求  -->

@@ -1,14 +1,16 @@
 <!--pages/musicplay/songAndPlay.wxml-->
 <template name="songitem">
-	<view class="songitem">
-  <!--播放图标  -->
-		<view class="song-play" bindtap="onclick" data-id="{{item.musicId}}" ><image src="../../icon/play.png" /></view>
+  <view class="songitem">
+    <!--播放图标  -->
+    <view class="song-play" bindtap="onclick" data-musicid="{{item.musicid}}">
+      <image src="../../icon/play.png" />
+    </view>
     <!--song 标题，歌手，专辑  -->
-    <view class="song-detail" bindtap="onclick" data-id="{{item.musicId}}">
-			<view class="song-title">{{item.songTitle}}</view>
-			<view class="song-subtitle">{{item.singerName}} - {{item.albumTitle}}</view>
-		</view>
-	</view>
+    <view class="song-detail" bindtap="onclick" data-musicid="{{item.musicid}}">
+      <view class="song-title">{{item.songTitle}}</view>
+      <view class="song-subtitle">{{item.singerName}} - {{item.albumTitle}}</view>
+    </view>
+  </view>
 </template>
 
 <view class="swiper-tab">
