@@ -14,10 +14,10 @@
   </view>
 </template>
 
-<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeigh-300}}px" bindchange="bindChange">
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeigh-200}}px" bindchange="bindChange">
   <swiper-item>
     <!-- 音乐列表 -->
-    <scroll-view scroll-y style="height:900rpx;">
+    <scroll-view scroll-y style="height:1050rpx;">
       <view class="songlist">
         <block wx:for="{{musicDetailList}}" wx:key="song_id">
           <template is="songitem" data="{{item: item, index: index}}" />

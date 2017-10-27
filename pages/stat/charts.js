@@ -6,7 +6,7 @@ var radarChart = null;
 
 Page({
   data: {
-    simulationDataName: '2017/09/23-2017/10/23心情统计',
+    simulationDataName: '2017/09/23-2017/10/23',
     simulationDataData: [8, 5, 2, 4],
     arr: [8, 5, 2, 4]
   },
@@ -35,7 +35,8 @@ Page({
     var dateEd = util.myFormatTime(new Date()) + "";
     name = dateBg + "-" + dateEd 
     _that.setData({//将返回数据记录在全局数据rebackData中
-      simulationDataName: name
+      simulationDataName: name,
+      simulationDataData:data
     })
     console.log("Cookie" + app.globalData.Cookie)
 
@@ -105,7 +106,7 @@ Page({
 
       extra: {
         radar: {
-          max: 25
+          max: 20
         }
       }
     });

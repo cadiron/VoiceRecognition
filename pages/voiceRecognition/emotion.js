@@ -8,7 +8,7 @@ Page({
     voices: [],//保存的音频数组  
     pauseStatus: false,//播放状态
     rebackData: 1,//情绪识别返回结果
-    emoPic: "../../icon/neutral.png",
+    emoPic: "../../icon/happy.png",
     emoText: "[高兴，开心]"
   },
   //手指按下  
