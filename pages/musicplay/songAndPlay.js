@@ -2,15 +2,18 @@
 const app = getApp();
 Page({
   data: {
-    //  页面配置 
+    // 页面配置 
     winWidth: 0,
     winHeight: 0,
+    
     //Tab切换
     currentTab: 0,
     clickMusicId: 3,
+
     //Tab-Play播放
     pauseStatus: false,
     length: 10,
+
     //Tab-song
     musicDetailList: [{
       musicid: 0,
@@ -97,14 +100,6 @@ Page({
         success: function (res) {
           console.log("songTitle" + res.data["0"].song.songTitle)
           data = res.data
-
-          //把数据封装在tempMusicDetailList
-
-          // for (var key in data) {
-          //   console.log('key: ' + key + data[key].song.songTitle)
-          //   jsonString = '{"musicid":key,"songTitle":data[key].song.songTitle+"singerName":data[key].singer.singerName,"songDir":data[key].song.songDir}'
-          //   tempMusicDetailList[key] = eval("("+jsonString+")");
-          // }
           that.setData({
             "musicDetailList[0].songTitle": res.data["0"].song.songTitle,
              "musicDetailList[0].singerName": res.data["0"].singer.singerName,

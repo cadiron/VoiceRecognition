@@ -1,101 +1,175 @@
 /* pages/emotion.wxss */
-.speak-style{
-  position: relative;
-  height: 240rpx;
-  width: 240rpx;
-  border-radius:20rpx;
-  margin:50% auto; 
-  background: #26A5FF;
-}
+.container {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 150rpx 0;
+  box-sizing: border-box;
+} 
 
-.item-style{
-  margin-top:30rpx;
+.item-style {
+  margin-top: 30rpx;
   margin-bottom: 30rpx;
 }
 
-.text-style{
-  text-align:center;
+.text-style {
+  text-align: center;
 }
 
-.record-style{
+.record-style {
   position: fixed;
   bottom: 0;
   left: 0;
   height: 120rrpx;
   widows: 100%;
 }
-.btn-style{
+
+.btn-style {
   margin-left: 30rpx;
   margin-right: 30rpx;
 }
-.sound-style{
+
+.sound-style {
   position: absolute;
   width: 75rpx;
   height: 150rpx;
   margin-top: 45rpx;
   margin-left: 80rpx;
 }
-.board{
+
+.board {
   overflow: hidden;
-  border-bottom: 2rpx solid #26A5FF;
+  border-bottom: 2rpx solid #26a5ff;
 }
 
 /*列布局*/
-.cell{
+
+.cell {
   display: flex;
   margin: 20rpx;
 }
-.cell-bd{
+
+.cell-bd {
   margin-left: 10rpx;
-  color: #886A38;
+  color: #886a38;
 }
-.cell .cell-bd{
+
+.cell .cell-bd {
   flex: 1;
   position: relative;
 }
+
 /**只显示一行*/
-.date{
-  font-size:30rpx;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+
+.date {
+  font-size: 30rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   overflow: hidden;
-  }
+}
+
 /*操作图标*/
-.operation-container{
+
+.operation-container {
   position: absolute;
-  bottom: 25rpx;
-  height: 240rpx;
+  bottom: 350rpx;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.icon-gotoPlay{
+
+.icon-gotoPlay {
   width: 100rpx;
   height: 100rpx;
 }
-.icon-recording{
-  margin: 0 60rpx;
-  width: 140rpx;
-  height: 140rpx;
-}
-.icon-recorded{
-  margin: 0 60rpx;
-  width: 140rpx;
-  height: 140rpx;
-}
-.icon-request{
 
+.icon-recording {
+  margin: 0 60rpx;
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.icon-recorded {
+  margin: 0 60rpx;
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.icon-request {
   width: 100rpx;
   height: 100rpx;
 }
 
 /*录音背景  */
-.background{
+
+.voice-style {
+  background: #f8d4b0;
+  margin-top: 250rpx;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bg-style {
+  position: absolute;
+  width: 280rpx;
+  height: 280rpx;
+}
+
+.sound-style {
+  position: absolute;
+  width: 120rpx;
+  height: 160rpx;
+  margin-top: 80rpx;
+  margin-left: 5rpx;
+}
+
+/*结果展示  */
+
+.result-container {
+  background: #f8d4b0;
+  position: absolute;
+  top: 0;
+  width: 100%;
   height: 60%;
-  top:0;
-  background:#f8d4b0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.emoResult {
+  position: relative;
+}
+
+.emotionText {
+  position: relative;
+  top: 70rpx;
+  margin-top: 20rpx;
+  margin-right: 150rpx;
+  margin-left: 200rpx;
+  font-size: 44rpx;
+  font-style: italic;
+  color: #fff;
+}
+.emoResult image {
+  margin-top: 100rpx;
+  margin-right: 150rpx;
+  margin-left: 235rpx;
+  width: 200rpx;
+  height: 200rpx;
+}
 
 
+
+.speak-style {
+  position: absolute;
+  top: 0;
+  color: #fff;
+  font-size: 44rpx;
 }

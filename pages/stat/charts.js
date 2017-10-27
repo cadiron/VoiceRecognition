@@ -6,7 +6,7 @@ var radarChart = null;
 
 Page({
   data: {
-    simulationDataName:'2017/09/23-2017/10/23心情统计',
+    simulationDataName: '2017/09/23-2017/10/23心情统计',
     simulationDataData: [8, 5, 2, 4],
     arr: [8, 5, 2, 4]
   },
@@ -29,13 +29,13 @@ Page({
     var data = [4, 3, 7, 1];
     //获取tagIdMap
     var showArr = [0, 0, 0, 0]
-    var tagArr =[];
+    var tagArr = [];
     //获取当前日期
     var dateBg = util.myTime(new Date()) + "";
     var dateEd = util.myFormatTime(new Date()) + "";
-    name = dateBg + "-" + dateEd + "心情统计"
+    name = dateBg + "-" + dateEd 
     _that.setData({//将返回数据记录在全局数据rebackData中
-      simulationDataName:name
+      simulationDataName: name
     })
     console.log("Cookie" + app.globalData.Cookie)
 
@@ -58,13 +58,13 @@ Page({
           { showArr[2] += 1; }
           if (tagArr[key] == 4)
           { showArr[3] += 1; }
-          } 
-        console.log("返回json数据中tagIdMap" +showArr)
+        }
+        console.log("返回json数据中tagIdMap" + showArr)
         _that.setData({//将返回数据记录在全局数据rebackData中
-          simulationDataData:showArr
+          simulationDataData: showArr
         })
       }
-    })                  
+    })
   },
   //更新数据
   updateData: function () {
@@ -105,7 +105,7 @@ Page({
 
       extra: {
         radar: {
-          max: 30
+          max: 25
         }
       }
     });

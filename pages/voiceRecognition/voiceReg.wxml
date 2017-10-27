@@ -1,4 +1,4 @@
 <!--pages/voiceReg.wxml-->
 <view>
-<canvas canvas-id="radarCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
+
 </view>

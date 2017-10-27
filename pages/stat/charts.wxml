@@ -1,5 +1,6 @@
 <!--pages/stat/charts.wxml-->
 <view class="container">
-    <canvas canvas-id="radarCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
-    <button type="primary" bindtap="updateData">更新数据</button>
+  <canvas canvas-id="radarCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
+    <button class='btn-style' bindtap="updateData" >更新数据</button>
 </view>
+
