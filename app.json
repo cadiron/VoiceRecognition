@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/voiceRecognition/emotion",
-    "pages/voiceRecognition/voiceReg",
     "pages/stat/charts",
     "pages/musicplay/songAndPlay"
   ],
