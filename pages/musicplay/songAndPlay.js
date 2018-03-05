@@ -150,6 +150,7 @@ Page({
     console.log("clickMusicId=" + that.data.clickMusicId + "src=" + src)
     that.audioCtx.setSrc(src)
 
+
     if (this.data.pauseStatus === true) {
       this.audioCtx.play()
       this.setData({ pauseStatus: false })
